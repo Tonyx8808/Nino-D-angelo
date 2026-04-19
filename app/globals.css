@@ -1,49 +1,45 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9903A;--gold-light:#E8B86D;--gold-dark:#8B6020;
+  --cream:#F5F0E8;--ink:#0E0C0A;--ink-mid:#2A2520;
+  --muted:#7A7060;--border:rgba(201,144,58,0.2);
+  --ff-display:'Cormorant Garamond',Georgia,serif;
+  --ff-body:'DM Sans',system-ui,sans-serif;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-body);
+  background:var(--ink);
+  color:var(--cream);
+  overflow-x:hidden;
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) var(--ink-mid);
 }
-
-html {
-  height: 100%;
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--ink-mid)}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold-light),var(--gold),var(--gold-dark));
+  border-radius:2px;
 }
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1);
 }
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+.section-eyebrow{
+  font-size:9px;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+  display:inline-flex;align-items:center;gap:10px;
 }
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.section-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+.section-h2{
+  font-family:var(--ff-display);
+  font-size:clamp(36px,5vw,64px);
+  font-weight:300;color:var(--cream);line-height:1;
+  margin-bottom:4px;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
+.section-h2 em{font-style:italic;font-weight:700;color:var(--gold)}
